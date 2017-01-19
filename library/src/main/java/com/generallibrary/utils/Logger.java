@@ -1,5 +1,6 @@
 package com.generallibrary.utils;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.generallibrary.base.LibDefine;
@@ -12,16 +13,17 @@ import java.io.IOException;
  * Created by Li DaChang on 16/7/21.
  * ..-..---.-.--..---.-...-..-....-.
  * 最新Log工具类!功能更贴心!
+ * 20170119:现在添加了合并对象串的方法,更强大啦
  */
 public class Logger {
-    private static final String DEFAULT_TAG = "+++";
+    private static final String DEFAULT_TAG = "+--+";
     private static final String SDK_LOG_FILE = "sdkLog.txt";
-    private static final String SSSS_TAG = "sssss";//贤哥的定制tag,对应编号0
-    private static final String DC_TAG = "---";//达畅的定制tag,对应编号1
-    private static final String DC_TAG_2 = "-+-";//达畅的定制tag2,编号32
+    private static final String SSSS_TAG = "ssss";//贤哥的定制tag,对应编号0
+    private static final String DC_TAG = "----";//达畅的定制tag,对应编号1
+    private static final String DC_TAG_2 = "-++-";//达畅的定制tag2,编号32
     private static final String ZHONG_XIA_TAG = "feng";//中霞的定制tag,对应编号2
     private static final String MAGINA = "magina";//高飞的定制tag,对应编号4
-    private static final String DDDDD_TAG = "ddddd";
+    private static final String DDDDD_TAG = "dddd";
     private static final String ZZL_TAG = "cscs"; //宗志龙的Tag,对应编号6
 
     /**
@@ -65,6 +67,37 @@ public class Logger {
         }
     }
 
+    /**
+     * 用于拼接各种串
+     *
+     * @param value 对象串
+     * @return String
+     */
+    private static String convertValues(Object... value) {
+        if (value == null) {
+            return null;
+        }
+        if (value.length == 1) {
+            return String.valueOf(value[0]);
+        }
+        String conVal = "";
+        if (value.length == 2) {
+            conVal = conVal + value[0] + " : " + value[1];
+        } else {
+            for (Object o : value) {
+                conVal = TextUtils.concat(conVal, String.valueOf(o), " -- ").toString();
+            }
+        }
+        return conVal;
+    }
+
+    public static void d(String msg) {
+        takeLogD(DEFAULT_TAG, getClassName(), msg);
+        if (LibDefine.mIsLogToFile) {
+            writeToFile("d", DEFAULT_TAG, msg);
+        }
+    }
+
     public static void d(int tag, String msg) {
         takeLogD(getTag(tag), getClassName(), msg);
         if (LibDefine.mIsLogToFile) {
@@ -79,10 +112,25 @@ public class Logger {
         }
     }
 
-    public static void d(String msg) {
-        takeLogD(DEFAULT_TAG, getClassName(), msg);
+    public static void d(int flag, Object... value) {
+        takeLogD(getTag(flag), getClassName(), convertValues(value));
+    }
+
+    public static void d(String tag, Object... value) {
+        takeLogD(tag, getClassName(), convertValues(value));
+    }
+
+    public static void i(String msg) {
+        takeLogI(DEFAULT_TAG, getClassName(), msg);
         if (LibDefine.mIsLogToFile) {
-            writeToFile("d", DEFAULT_TAG, msg);
+            writeToFile("i", DEFAULT_TAG, msg);
+        }
+    }
+
+    public static void i(int flag, String msg) {
+        takeLogI(getTag(flag), getClassName(), msg);
+        if (LibDefine.mIsLogToFile) {
+            writeToFile("i", getTag(flag), msg);
         }
     }
 
@@ -93,35 +141,22 @@ public class Logger {
         }
     }
 
-    public static void i(String msg) {
-        takeLogI(DEFAULT_TAG, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
-            writeToFile("i", DEFAULT_TAG, msg);
-        }
+    public static void i(int flag, Object... value) {
+        takeLogI(getTag(flag), getClassName(), convertValues(value));
     }
 
-    /**
-     * 根据序号打印自己的定制flag
-     *
-     * @param flag flag序号
-     * @param msg  信息
-     */
-    public static void i(int flag, String msg) {
-        takeLogI(getTag(flag), getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
-            writeToFile("i", getTag(flag), msg);
-        }
+    public static void i(String tag, Object... value) {
+        takeLogI(tag, getClassName(), convertValues(value));
     }
 
+
     /**
-     * 自动添加冒号的方法~
+     * 分步debug用的
      *
-     * @param flag     flag序号
-     * @param msgKey   key
-     * @param msgValue value
+     * @param num 数字
      */
-    public static void i(int flag, String msgKey, Object msgValue) {
-        takeLogI(getTag(flag), getClassName(), flag + " " + msgKey + " : " + String.valueOf(msgValue) + " --;");
+    public static void i(int num) {
+        takeLogI(DEFAULT_TAG, getClassName(), "-------------------" + num);
     }
 
     /**
@@ -164,23 +199,6 @@ public class Logger {
         }
     }
 
-
-    /**
-     * 分步debug用的
-     *
-     * @param num 数字
-     */
-    public static void i(int num) {
-        takeLogI(DEFAULT_TAG, getClassName(), "-------------------" + num);
-    }
-
-    public static void w(String tag, String msg) {
-        takeLogW(tag, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
-            writeToFile("w", tag, msg);
-        }
-    }
-
     public static void w(String msg) {
         takeLogW(DEFAULT_TAG, getClassName(), msg);
         if (LibDefine.mIsLogToFile) {
@@ -193,6 +211,21 @@ public class Logger {
         if (LibDefine.mIsLogToFile) {
             writeToFile("w", getTag(flag), msg);
         }
+    }
+
+    public static void w(String tag, String msg) {
+        takeLogW(tag, getClassName(), msg);
+        if (LibDefine.mIsLogToFile) {
+            writeToFile("w", tag, msg);
+        }
+    }
+
+    public static void w(int flag, Object... value) {
+        takeLogW(getTag(flag), getClassName(), convertValues(value));
+    }
+
+    public static void w(String tag, Object... value) {
+        takeLogW(tag, getClassName(), convertValues(value));
     }
 
     public static void e(String msg) {
@@ -218,12 +251,20 @@ public class Logger {
         }
     }
 
+    public static void e(int flag, Object... value) {
+        takeLogE(getTag(flag), getClassName(), convertValues(value));
+    }
+
+    public static void e(String tag, Object... value) {
+        takeLogE(tag, getClassName(), convertValues(value));
+    }
+
     public static void json(int tagFlag, String jsonStr) {
         if (LibDefine.mIsDebug) {
             while (jsonStr.length() > 3950) {
                 int subStringIndex = jsonStr.lastIndexOf(",", 3950);
                 if (subStringIndex == -1) {
-                    subStringIndex =3950;
+                    subStringIndex = 3950;
                     takeLogI(getTag(tagFlag), getClassName(), jsonStr.substring(0, subStringIndex));
                     jsonStr = jsonStr.substring(subStringIndex).trim();
                 }
