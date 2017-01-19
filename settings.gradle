@@ -1,1 +1,1 @@
-include ':sample', ':okhttp-utils', ':library'
+include ':sample', ':library'

@@ -1,8 +1,10 @@
 package com.generallibrary.net;
 
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
-import com.zhy.http.okhttp.request.RequestCall;
+
+
+import com.generallibrary.okhttp.OkHttpUtils;
+import com.generallibrary.okhttp.callback.Callback;
+import com.generallibrary.okhttp.request.RequestCall;
 
 import java.io.File;
 import java.util.HashMap;

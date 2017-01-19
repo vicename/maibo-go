@@ -1,10 +1,9 @@
 package com.generallibrary.net;
 
-import com.zhy.http.okhttp.callback.Callback;
+        import com.generallibrary.okhttp.callback.Callback;
 
-import java.io.File;
-import java.util.Map;
-import java.util.Objects;
+        import java.io.File;
+        import java.util.Map;
 
 /**
  * Created by yueguang on 16-12-15.
