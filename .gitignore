@@ -1,4 +1,4 @@
-/build.gradle
+
 
 # Built application files
 *.apk
@@ -56,3 +56,4 @@ Thumbs.db
 .DS_Store
 
 generallibrary/libs/
+
