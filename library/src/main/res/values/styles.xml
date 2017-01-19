@@ -1,0 +1,193 @@
+<resources>
+    <style name="ActionBarTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+
+    <!--<style name="Custom.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:paddingTop">16dp</item>
+    </style>-->
+
+    <!--loadding dialog-->
+    <style name="CustomProgressDialog" parent="@style/CustomDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="dialog2" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!--======================================================================================-->
+    <!-- 通用textview大小及颜色 -->
+    <!--======================================================================================-->
+
+    <!-- 16sp -->
+    <style name="common_16_text" parent="@style/common_text">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- 14sp -->
+    <style name="common_14_text" parent="@style/common_text">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="common_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="common_text_match_parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- (白色的textView) -->
+    <style name="common_white_text" parent="@style/common_text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <!-- 14sp,白色的textView -->
+    <style name="common_white_28_text" parent="@style/common_white_text">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <!--14sp,白色的textView -->
+    <style name="common_white_14_text" parent="@style/common_white_text">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--16sp,白色的textView -->
+    <style name="common_white_16_text" parent="@style/common_white_text">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- 18sp,白色的textView -->
+    <style name="common_white_18_text" parent="@style/common_white_text">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- 20sp,白色的textView -->
+    <style name="common_white_20_text" parent="@style/common_white_text">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!-- (黑色的textView) -->
+    <style name="common_black_text" parent="@style/common_text">
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+    <!-- 14sp,黑色的textView -->
+    <style name="common_black_14_text" parent="@style/common_black_text">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- 16sp,黑色的textView -->
+    <style name="common_black_16_text" parent="@style/common_black_text">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- 18sp,黑色的textView -->
+    <style name="common_black_17_text" parent="@style/common_black_text">
+        <item name="android:textSize">17sp</item>
+    </style>
+    <!-- 18sp,黑色的textView -->
+    <style name="common_black_18_text" parent="@style/common_black_text">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- 20sp,黑色的textView -->
+    <style name="common_black_20_text" parent="@style/common_black_text">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!-- 24sp,黑色的textView -->
+    <style name="common_black_24_text" parent="@style/common_black_text">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <!-- 28sp,黑色的textView -->
+    <style name="common_black_28_text" parent="@style/common_black_text">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <!-- 32sp,黑色的textView -->
+    <style name="common_black_32_text" parent="@style/common_black_text">
+        <item name="android:textSize">32sp</item>
+    </style>
+    <!-- (红色的textView) -->
+    <style name="common_red_text" parent="@style/common_text">
+        <item name="android:textColor">@color/red</item>
+    </style>
+    <!-- 14sp,红色的textView -->
+    <style name="common_red_14_text" parent="@style/common_red_text">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- 16sp,红色的textView -->
+    <style name="common_red_16_text" parent="@style/common_red_text">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- 18sp,红色的textView -->
+    <style name="common_red_18_text" parent="@style/common_red_text">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- 20sp,红色的textView -->
+    <style name="common_red_20_text" parent="@style/common_red_text">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!-- (灰色的textView) -->
+    <style name="common_gray_text" parent="@style/common_text">
+        <item name="android:textColor">@color/text_gary</item>
+    </style>
+    <!-- 11sp,灰色的textView -->
+    <style name="common_gray_11_text" parent="@style/common_gray_text">
+        <item name="android:textSize">11sp</item>
+    </style>
+    <!-- 14sp,灰色的textView -->
+    <style name="common_gray_12_text" parent="@style/common_gray_text">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- 14sp,灰色的textView -->
+    <style name="common_gray_14_text" parent="@style/common_gray_text">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- 16sp,灰色的textView -->
+    <style name="common_gray_16_text" parent="@style/common_gray_text">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- 18sp,灰色的textView -->
+    <style name="common_gray_18_text" parent="@style/common_gray_text">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- 20sp,灰色的textView -->
+    <style name="common_gray_20_text" parent="@style/common_gray_text">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- 分割线-->
+    <style name="common_divider">
+        <item name="android:background">@color/dividerColor</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="common_line_b8">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/line_b8</item>
+    </style>
+
+</resources>
