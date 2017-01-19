@@ -33,8 +33,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.android.support:recyclerview-v7:24.0.0'
-//    compile project(path: ':okhttp-utils')
-    compile 'com.zhy:okhttputils:2.6.2'
+    compile project(path: ':okhttp-utils')
+//    compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.facebook.fresco:fresco:0.14.1'
 }
 
