@@ -32,25 +32,16 @@ public abstract class LibBaseActivity extends AppCompatActivity implements WeakH
     public WeakHandler mHandler;
     private View mStatusBarFitter;
     private CommonProgressDialog progressDialog;
-    private boolean mIsBaseInit = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
         mHandler = new WeakHandler(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (!mIsBaseInit) {
             initVar();
             initView();
             initListener();
-            mIsBaseInit = true;
             loadData();
-        }
     }
 
     protected abstract void initVar();
