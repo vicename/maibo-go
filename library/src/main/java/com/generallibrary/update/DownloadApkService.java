@@ -40,7 +40,7 @@ public class DownloadApkService extends Service {
         } else if (action.equals(ACTION_CANCEL)) {
             //取消下载
             DownloadAsyncTask.FLAG_KEEP_DOWNLOAD = false;
-            Toast.makeText(this, R.string.cancel_download, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "下载已取消", Toast.LENGTH_SHORT).show();
         }
         return super.onStartCommand(intent, flags, startId);
     }

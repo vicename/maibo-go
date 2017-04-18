@@ -50,10 +50,10 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, File> {
             builder.setContentIntent(pendingIntent);
             // 获取通知管理器
             NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            builder.setContentTitle(context.getResources().getString(R.string.ready_for_installation));
-            builder.setContentText(context.getResources().getString(R.string.download_complete_installation));
+            builder.setContentTitle("准备安装更新");
+            builder.setContentText("下载完成，点击进行安装");
             // 直接在标题栏显示的通知
-            builder.setTicker(context.getResources().getString(R.string.download_complete));
+            builder.setTicker("下载完成");
             // 控制点击后是否消失
             builder.setAutoCancel(false);
             mNotificationManager.notify(0, builder.build());
@@ -62,8 +62,8 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, File> {
             PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentIntent(pendingIntent);
             NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            builder.setContentTitle(context.getResources().getString(R.string.downloading));
-            builder.setContentText(context.getResources().getString(R.string.has_download) + values[0] + context.getResources().getString(R.string.sign));
+            builder.setContentTitle("正在下载");
+            builder.setContentText("已下载" + values[0] + "%");
             //			builder.setContentInfo("点击取消下载");
             if (values[0] == 0) {
                 builder.setProgress(100, values[0], true);
@@ -71,7 +71,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, File> {
                 builder.setProgress(100, values[0], false);
             }
             builder.setOngoing(true);
-            builder.setTicker(context.getResources().getString(R.string.start_downloading));
+            builder.setTicker("开始下载");
             builder.setAutoCancel(true);
             mNotificationManager.notify(0, builder.build());
         }

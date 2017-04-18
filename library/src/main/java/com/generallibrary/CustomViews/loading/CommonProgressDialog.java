@@ -16,7 +16,7 @@ import com.generallibrary.R;
 public class CommonProgressDialog extends Dialog {
 
     public CommonProgressDialog(Context context) {
-        super(context, R.style.CustomProgressDialog);
+        super(context, R.style.Lib_CustomProgressDialog);
         this.setContentView(R.layout.activity_base_dialog);
         this.getWindow().getAttributes().gravity = Gravity.CENTER;
     }

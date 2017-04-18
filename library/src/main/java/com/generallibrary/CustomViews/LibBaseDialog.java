@@ -3,12 +3,9 @@ package com.generallibrary.CustomViews;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.generallibrary.R;
@@ -27,7 +24,7 @@ public abstract class LibBaseDialog extends Dialog {
     protected Context mContext;
 
     public LibBaseDialog(Context context) {
-        super(context, R.style.dialog);
+        super(context, R.style.Lib_dialog);
         mContext = context;
         mDialogView = (ViewGroup) View.inflate(context, setLayoutView(), null);
         this.setContentView(mDialogView);
@@ -35,7 +32,7 @@ public abstract class LibBaseDialog extends Dialog {
     }
 
     public LibBaseDialog(Context context, boolean isTranseBackGround) {
-        super(context, R.style.dialog2);
+        super(context, R.style.Lib_dialog2);
         mContext = context;
         mDialogView = (ViewGroup) View.inflate(context, setLayoutView(), null);
         this.setContentView(mDialogView);

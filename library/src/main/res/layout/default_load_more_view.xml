@@ -22,7 +22,7 @@
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:paddingLeft="8dp"
-            android:text="@string/app_loading_more" />
+            android:text="加载更多" />
     </LinearLayout>
 </RelativeLayout>
 

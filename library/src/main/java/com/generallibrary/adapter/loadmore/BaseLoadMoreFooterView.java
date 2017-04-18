@@ -57,8 +57,8 @@ public abstract class BaseLoadMoreFooterView extends FrameLayout {
         mTvContent = (TextView) header.findViewById(R.id.tv_content);
         mProgressView = header.findViewById(R.id.progress_view);
 
-        loadingText = context.getString(R.string.app_loading_more);
-        noMoreText = context.getString(R.string.app_no_more_data);
+        loadingText = "加载更多";
+        noMoreText = "没有更多数据了…";
     }
 
     protected void updateLoadMoreView(String content, boolean isVisible){
