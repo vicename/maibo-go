@@ -7,7 +7,7 @@ import android.os.Environment;
  * ..-..---.-.--..---.-...-..-....-.
  */
 public class LibDefine {
-    public static final boolean mIsDebug = true;
+    public static boolean mIsDebug = true;
     public static final boolean mIsLogToFile = false;
     public static String mPathLog = Environment.getExternalStorageDirectory().getAbsolutePath();
 }
