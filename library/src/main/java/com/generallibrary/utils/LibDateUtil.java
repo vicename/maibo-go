@@ -236,7 +236,7 @@ public class LibDateUtil {
     }
 
     private static long toYears(long date) {
-        return toMonths(date) / 365L;
+        return toMonths(date) / 12L;
     }
 
     /**
