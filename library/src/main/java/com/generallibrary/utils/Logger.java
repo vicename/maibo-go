@@ -301,11 +301,11 @@ public class Logger {
     }
 
     public static void writeToFile(final String level, final String flag, final String msg1) {
-        LibBackgroundWorker.getInstance().executeTask(new Runnable() {
+        LibWorker.getInstance().executeTask(new Runnable() {
             @Override
             public void run() {
                 if (LibCommonUtils.initPath(LibDefine.mPathLog)) {
-                    String msg = LibDateUtil.formatTime(System.currentTimeMillis()) + "  " + level + "   " + flag + "    " + msg1 + "\n";
+                    String msg = LibDateUtils.formatTime(System.currentTimeMillis()) + "  " + level + "   " + flag + "    " + msg1 + "\n";
                     File log = new File(LibDefine.mPathLog, SDK_LOG_FILE);
                     FileWriter fw = null;
                     try {

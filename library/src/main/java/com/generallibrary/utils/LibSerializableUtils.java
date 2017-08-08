@@ -14,7 +14,7 @@ import java.util.List;
  * Created by LiDaChang on 16/11/24.
  * __--__---__-------------__----__
  */
-public class SerializableUtil {
+public class LibSerializableUtils {
 
     public static <E> String list2String(List<E> list) throws IOException {
         //实例化一个ByteArrayOutputStream对象，用来装载压缩后的字节文件

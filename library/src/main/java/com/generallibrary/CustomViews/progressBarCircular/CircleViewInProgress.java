@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
  * Created by Li DaChang on 16/9/5.
  * ..-..---.-.--..---.-...-..-....-.
  */
-public class CustomView extends RelativeLayout {
+public class CircleViewInProgress extends RelativeLayout {
 
     private final static String MATERIALDESIGNXML = "http://schemas.android.com/apk/res-auto";
     private final static String ANDROIDXML = "http://schemas.android.com/apk/res/android";
@@ -21,7 +21,7 @@ public class CustomView extends RelativeLayout {
     // Indicate if user touched this view the last time
     public boolean isLastTouch = false;
 
-    public CustomView(Context context, AttributeSet attrs) {
+    public CircleViewInProgress(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

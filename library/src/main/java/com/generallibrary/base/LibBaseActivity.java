@@ -19,8 +19,8 @@ import android.widget.Toast;
 
 import com.generallibrary.CustomViews.loading.CommonProgressDialog;
 import com.generallibrary.R;
-import com.generallibrary.utils.LibCommonUtils;
-import com.generallibrary.utils.ScreenUtils;
+import com.generallibrary.utils.LibWindowUtils;
+import com.generallibrary.utils.LibWorker;
 import com.generallibrary.utils.WeakHandler;
 
 /**
@@ -173,7 +173,7 @@ public abstract class LibBaseActivity extends AppCompatActivity implements WeakH
     protected void fitStatusBar(int resId) {
         // 创建View
         mStatusBarFitter = new View(this);
-        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.getStatusHeight(LibBaseActivity.this));
+        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LibWindowUtils.getStatusBarHeight(LibBaseActivity.this));
         mStatusBarFitter.setBackgroundColor(ContextCompat.getColor(LibBaseActivity.this, resId));
         mStatusBarFitter.setLayoutParams(lParams);
         // 获得根视图并把TextView加进去。
@@ -188,7 +188,7 @@ public abstract class LibBaseActivity extends AppCompatActivity implements WeakH
     }
 
     protected void toastGo(final String msg) {
-        if (LibCommonUtils.isInMainThread()) {
+        if (LibWorker.isInMainThread()) {
             Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
         } else {
             runOnUiThread(new Runnable() {

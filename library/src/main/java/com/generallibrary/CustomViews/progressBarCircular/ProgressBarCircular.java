@@ -16,7 +16,7 @@ import android.util.TypedValue;
  * Created by Li DaChang on 16/9/5.
  * ..-..---.-.--..---.-...-..-....-.
  */
-public class ProgressBarCircular extends CustomView {
+public class ProgressBarCircular extends CircleViewInProgress {
 
     private final static String ANDROID_XML = "http://schemas.android.com/apk/res/android";
     private int mBackgroundColor = Color.parseColor("#536dfe");

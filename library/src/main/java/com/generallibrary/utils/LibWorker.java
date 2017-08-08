@@ -1,5 +1,7 @@
 package com.generallibrary.utils;
 
+import android.os.Looper;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -8,17 +10,17 @@ import java.util.concurrent.Future;
  * 线程池封装
  * Created by yueguang on 15-8-18.
  */
-public class LibBackgroundWorker {
+public class LibWorker {
     private ExecutorService mThreadPool;
-    private static LibBackgroundWorker mWorker;
+    private static LibWorker mWorker;
 
-    private LibBackgroundWorker() {
+    private LibWorker() {
         mThreadPool = Executors.newCachedThreadPool();
     }
 
-    public static LibBackgroundWorker getInstance() {
+    public static LibWorker getInstance() {
         if (mWorker == null) {
-            mWorker = new LibBackgroundWorker();
+            mWorker = new LibWorker();
         }
         return mWorker;
     }
@@ -29,5 +31,9 @@ public class LibBackgroundWorker {
 
     public void executeTask(Runnable task) {
         mThreadPool.execute(task);
+    }
+
+    public static boolean isInMainThread() {
+        return Looper.getMainLooper() == Looper.myLooper();
     }
 }

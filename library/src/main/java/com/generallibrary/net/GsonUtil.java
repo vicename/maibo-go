@@ -20,7 +20,7 @@ public class GsonUtil {
     static {
         if (gson == null) {
             GsonBuilder gb = new GsonBuilder();
-            gb.registerTypeAdapter(String.class, new StringConverter());
+            gb.registerTypeAdapter(String.class, new JsonStringConverter());
             gson = gb.create();
         }
     }

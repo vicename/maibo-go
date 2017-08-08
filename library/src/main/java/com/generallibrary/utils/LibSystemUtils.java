@@ -1,6 +1,5 @@
 package com.generallibrary.utils;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -9,26 +8,17 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.DisplayMetrics;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 
 import com.generallibrary.base.ApplicationBase;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,13 +27,13 @@ import java.util.regex.Pattern;
 
 
 /**
- * © 2012 amsoft.cn 名称：LibAppUtil.java 描述：应用工具类.
+ * © 2012 amsoft.cn 名称：LibSystemUtils.java 描述：应用工具类.
  *
  * @author 还如一梦中
  * @version v1.0
  * @date：2011-11-10 下午11:52:13
  */
-public class LibAppUtil {
+public class LibSystemUtils {
 
     public static List<String[]> mProcessList = null;
 
@@ -205,60 +195,7 @@ public class LibAppUtil {
         }
     }
 
-    /**
-     * 描述：判断网络是否有效.
-     *
-     * @param context the context
-     * @return true, if is network available
-     */
-    public static boolean isNetworkAvailable(Context context) {
-        try {
-            ConnectivityManager connectivity = (ConnectivityManager) context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            if (connectivity != null) {
-                NetworkInfo info = connectivity.getActiveNetworkInfo();
-                if (info != null && info.isConnected()) {
-                    if (info.getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return false;
-    }
 
-    /**
-     * Gps是否打开 需要<uses-permission
-     * android:name="android.permission.ACCESS_FINE_LOCATION" />权限
-     *
-     * @param context the context
-     * @return true, if is gps enabled
-     */
-    public static boolean isGpsEnabled(Context context) {
-        LocationManager lm = (LocationManager) context
-                .getSystemService(Context.LOCATION_SERVICE);
-        return lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-    }
-
-    /**
-     * 判断当前网络是否是移动数据网络.
-     *
-     * @param context the context
-     * @return boolean
-     */
-    public static boolean isMobile(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-        if (activeNetInfo != null
-                && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-            return true;
-        }
-        return false;
-    }
 
     /**
      * 导入数据库.
@@ -337,33 +274,7 @@ public class LibAppUtil {
         return mDisplayMetrics;
     }
 
-    /**
-     * 打开键盘.
-     *
-     * @param context the context
-     */
-    public static void showSoftInput(Context context) {
-        InputMethodManager inputMethodManager = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.toggleSoftInput(0,
-                InputMethodManager.HIDE_NOT_ALWAYS);
-    }
 
-    /**
-     * 关闭键盘事件.
-     *
-     * @param context the context
-     */
-    public static void closeSoftInput(Context context) {
-        InputMethodManager inputMethodManager = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null
-                && ((Activity) context).getCurrentFocus() != null) {
-            inputMethodManager.hideSoftInputFromWindow(((Activity) context)
-                            .getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-    }
 
     /**
      * 获取包信息.
@@ -382,7 +293,6 @@ public class LibAppUtil {
         return info;
     }
 
-
     /**
      * 描述：kill进程.
      *
@@ -397,7 +307,7 @@ public class LibAppUtil {
 		 * DataOutputStream(process.getOutputStream()); os.writeBytes(cmd +
 		 * "\n"); os.writeBytes("exit\n"); os.flush(); process.waitFor(); }
 		 * catch (Exception e) { e.printStackTrace(); }
-		 * AbLogUtil.d(LibAppUtil.class, "#kill -9 "+pid);
+		 * AbLogUtil.d(LibSystemUtils.class, "#kill -9 "+pid);
 		 */
 
         ActivityManager activityManager = (ActivityManager) context
@@ -423,144 +333,6 @@ public class LibAppUtil {
 
     }
 
-
-    /**
-     * 描述：执行命令.
-     *
-     * @param command
-     * @param workdirectory
-     * @return
-     */
-    public static String runCommand(String[] command, String workdirectory) {
-        String result = "";
-        try {
-            ProcessBuilder builder = new ProcessBuilder(command);
-            // set working directory
-            if (workdirectory != null) {
-                builder.directory(new File(workdirectory));
-            }
-            builder.redirectErrorStream(true);
-            Process process = builder.start();
-            InputStream in = process.getInputStream();
-            byte[] buffer = new byte[1024];
-            while (in.read(buffer) != -1) {
-                String str = new String(buffer);
-                result = result + str;
-            }
-            in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    /**
-     * 描述：运行脚本.
-     *
-     * @param script
-     * @return
-     */
-    public static String runScript(String script) {
-        String sRet = "";
-        try {
-            final Process m_process = Runtime.getRuntime().exec(script);
-            final StringBuilder sbread = new StringBuilder();
-            Thread tout = new Thread(new Runnable() {
-                public void run() {
-                    BufferedReader bufferedReader = new BufferedReader(
-                            new InputStreamReader(m_process.getInputStream()),
-                            8192);
-                    String ls_1 = null;
-                    try {
-                        while ((ls_1 = bufferedReader.readLine()) != null) {
-                            sbread.append(ls_1).append("\n");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        try {
-                            bufferedReader.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-            tout.start();
-
-            final StringBuilder sberr = new StringBuilder();
-            Thread terr = new Thread(new Runnable() {
-                public void run() {
-                    BufferedReader bufferedReader = new BufferedReader(
-                            new InputStreamReader(m_process.getErrorStream()),
-                            8192);
-                    String ls_1 = null;
-                    try {
-                        while ((ls_1 = bufferedReader.readLine()) != null) {
-                            sberr.append(ls_1).append("\n");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        try {
-                            bufferedReader.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-            terr.start();
-
-            int retvalue = m_process.waitFor();
-            while (tout.isAlive()) {
-                Thread.sleep(50);
-            }
-            if (terr.isAlive())
-                terr.interrupt();
-            String stdout = sbread.toString();
-            String stderr = sberr.toString();
-            sRet = stdout + stderr;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return sRet;
-    }
-
-    /**
-     * 应用程序运行命令获取 Root权限，设备必须已破解(获得ROOT权限)
-     *
-     * @return 应用程序是/否获取Root权限
-     */
-    public static boolean getRootPermission(Context context) {
-        String packageCodePath = context.getPackageCodePath();
-        Process process = null;
-        DataOutputStream os = null;
-        try {
-            String cmd = "chmod 777 " + packageCodePath;
-            // 切换到root帐号
-            process = Runtime.getRuntime().exec("su");
-            os = new DataOutputStream(process.getOutputStream());
-            os.writeBytes(cmd + "\n");
-            os.writeBytes("exit\n");
-            os.flush();
-            process.waitFor();
-        } catch (Exception e) {
-            return false;
-        } finally {
-            try {
-                if (os != null) {
-                    os.close();
-                }
-                process.destroy();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return true;
-    }
-
     /**
      * 描述：获取进程运行的信息.
      *
@@ -569,7 +341,7 @@ public class LibAppUtil {
     public static List<String[]> getProcessRunningInfo() {
         List<String[]> processList = null;
         try {
-            String result = runCommandTopN1();
+            String result = LibHackUtils.runCommandTopN1();
             processList = parseProcessRunningInfo(result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -577,21 +349,6 @@ public class LibAppUtil {
         return processList;
     }
 
-    /**
-     * 描述：top -n 1.
-     *
-     * @return
-     */
-    public static String runCommandTopN1() {
-        String result = null;
-        try {
-            String[] args = {"/system/bin/top", "-n", "1"};
-            result = runCommand(args, "/system/bin/");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
 
     /**
      * 描述：解析数据.
@@ -614,7 +371,7 @@ public class LibAppUtil {
         // 使用正则表达式分割字符串
         for (int i = 0; i < rows.length; i++) {
             tempString = rows[i];
-            // AbLogUtil.d(LibAppUtil.class, tempString);
+            // AbLogUtil.d(LibSystemUtils.class, tempString);
             if (tempString.indexOf("PID") == -1) {
                 if (bIsProcInfo == true) {
                     tempString = tempString.trim();
@@ -624,7 +381,7 @@ public class LibAppUtil {
                         if (columns[9].startsWith("/system/bin/")) {
                             continue;
                         }
-                        // AbLogUtil.d(LibAppUtil.class,
+                        // AbLogUtil.d(LibSystemUtils.class,
                         // "#"+columns[9]+",PID:"+columns[0]);
                         processList.add(columns);
                     }
@@ -682,35 +439,5 @@ public class LibAppUtil {
         return memory;
     }
 
-
-    /**
-     * 设置隐藏标题栏
-     *
-     * @param activity
-     */
-    public static void setNoTitleBar(Activity activity) {
-        activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-    }
-
-    /**
-     * 设置全屏
-     *
-     * @param activity
-     */
-    public static void setFullScreen(Activity activity) {
-        activity.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
-
-    /**
-     * 取消全屏
-     *
-     * @param activity
-     */
-    public static void cancelFullScreen(Activity activity) {
-        activity.getWindow().clearFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
 
 }

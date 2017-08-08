@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
  * 处理json中出现null的处理
  * Created by yueguang on 16-12-16.
  */
-class StringConverter implements JsonSerializer<String>, JsonDeserializer<String> {
+class JsonStringConverter implements JsonSerializer<String>, JsonDeserializer<String> {
     public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
         if (src == null) {
             return new JsonPrimitive("");

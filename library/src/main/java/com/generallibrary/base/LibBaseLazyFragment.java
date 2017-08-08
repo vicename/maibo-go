@@ -17,7 +17,7 @@ import com.generallibrary.utils.WeakHandler;
  * Created by feng on 2016/10/14.
  * 延迟加载的fragment，只有获取用户焦点后才获取数据 ，布局不变而只修改数据
  */
-public abstract class LibBaseFragment extends Fragment implements WeakHandler.IHandler, SwipeRefreshLayout.OnRefreshListener {
+public abstract class LibBaseLazyFragment extends Fragment implements WeakHandler.IHandler, SwipeRefreshLayout.OnRefreshListener {
 
     private boolean isLoad = false;
     /**

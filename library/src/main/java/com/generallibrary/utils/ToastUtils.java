@@ -17,7 +17,7 @@ import com.generallibrary.R;
 /**
  * Created by feng on 2016/10/12.
  */
-public class ToastUtil {
+public class ToastUtils {
 
     private static Toast mToast;
 
