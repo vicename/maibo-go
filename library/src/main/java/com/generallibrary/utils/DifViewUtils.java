@@ -32,7 +32,7 @@ import android.widget.ListView;
 
 /**
  * © 2012 amsoft.cn
- * 名称：LibViewUtils.java
+ * 名称：DifViewUtils.java
  * 描述：View工具类.
  *
  * @author 还如一梦中
@@ -40,7 +40,7 @@ import android.widget.ListView;
  * @date：2013-01-17 下午11:52:13
  */
 
-public class LibViewUtils {
+public class DifViewUtils {
     
     /**
      * 无效值
@@ -195,7 +195,7 @@ public class LibViewUtils {
      * @return px值
      */
     public static float dip2px(Context context, float dipValue) {
-        DisplayMetrics mDisplayMetrics = LibSystemUtils.getDisplayMetrics(context);
+        DisplayMetrics mDisplayMetrics = DifSystemUtils.getDisplayMetrics(context);
         return applyDimension(TypedValue.COMPLEX_UNIT_DIP,dipValue,mDisplayMetrics);
     }
 
@@ -207,7 +207,7 @@ public class LibViewUtils {
      * @return dip值
      */
     public static float px2dip(Context context, float pxValue) {
-        DisplayMetrics mDisplayMetrics = LibSystemUtils.getDisplayMetrics(context);
+        DisplayMetrics mDisplayMetrics = DifSystemUtils.getDisplayMetrics(context);
         return pxValue / mDisplayMetrics.density;
     }
 
@@ -229,7 +229,7 @@ public class LibViewUtils {
      * @return sp值
      */
     public static float sp2px(Context context, float spValue) {
-        DisplayMetrics mDisplayMetrics = LibSystemUtils.getDisplayMetrics(context);
+        DisplayMetrics mDisplayMetrics = DifSystemUtils.getDisplayMetrics(context);
         return applyDimension(TypedValue.COMPLEX_UNIT_SP,spValue,mDisplayMetrics);
     }
     
@@ -240,7 +240,7 @@ public class LibViewUtils {
      * @return sp值
      */
     public static float px2sp(Context context, float pxValue) {
-        DisplayMetrics mDisplayMetrics = LibSystemUtils.getDisplayMetrics(context);
+        DisplayMetrics mDisplayMetrics = DifSystemUtils.getDisplayMetrics(context);
         return pxValue / mDisplayMetrics.scaledDensity;
     }
 	/**

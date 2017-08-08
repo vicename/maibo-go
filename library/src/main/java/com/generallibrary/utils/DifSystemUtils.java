@@ -27,13 +27,13 @@ import java.util.regex.Pattern;
 
 
 /**
- * © 2012 amsoft.cn 名称：LibSystemUtils.java 描述：应用工具类.
+ * © 2012 amsoft.cn  描述：应用工具类.
  *
  * @author 还如一梦中
  * @version v1.0
  * @date：2011-11-10 下午11:52:13
  */
-public class LibSystemUtils {
+public class DifSystemUtils {
 
     public static List<String[]> mProcessList = null;
 
@@ -307,7 +307,7 @@ public class LibSystemUtils {
 		 * DataOutputStream(process.getOutputStream()); os.writeBytes(cmd +
 		 * "\n"); os.writeBytes("exit\n"); os.flush(); process.waitFor(); }
 		 * catch (Exception e) { e.printStackTrace(); }
-		 * AbLogUtil.d(LibSystemUtils.class, "#kill -9 "+pid);
+		 * AbLogUtil.d(DifSystemUtils.class, "#kill -9 "+pid);
 		 */
 
         ActivityManager activityManager = (ActivityManager) context
@@ -341,7 +341,7 @@ public class LibSystemUtils {
     public static List<String[]> getProcessRunningInfo() {
         List<String[]> processList = null;
         try {
-            String result = LibHackUtils.runCommandTopN1();
+            String result = DifHackUtils.runCommandTopN1();
             processList = parseProcessRunningInfo(result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -371,7 +371,7 @@ public class LibSystemUtils {
         // 使用正则表达式分割字符串
         for (int i = 0; i < rows.length; i++) {
             tempString = rows[i];
-            // AbLogUtil.d(LibSystemUtils.class, tempString);
+            // AbLogUtil.d(DifSystemUtils.class, tempString);
             if (tempString.indexOf("PID") == -1) {
                 if (bIsProcInfo == true) {
                     tempString = tempString.trim();
@@ -381,7 +381,7 @@ public class LibSystemUtils {
                         if (columns[9].startsWith("/system/bin/")) {
                             continue;
                         }
-                        // AbLogUtil.d(LibSystemUtils.class,
+                        // AbLogUtil.d(DifSystemUtils.class,
                         // "#"+columns[9]+",PID:"+columns[0]);
                         processList.add(columns);
                     }

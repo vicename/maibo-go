@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @data 2015/9/22
  */
-public class LibGsonUtils {
+public class DifGsonUtils {
 
     private static Gson gson = null;
 
@@ -20,7 +20,7 @@ public class LibGsonUtils {
         }
     }
 
-    private LibGsonUtils() {
+    private DifGsonUtils() {
     }
 
     /**

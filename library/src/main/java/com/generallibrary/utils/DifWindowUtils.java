@@ -17,8 +17,8 @@ import java.lang.reflect.Field;
  *
  * @author zhy
  */
-public class LibWindowUtils {
-    private LibWindowUtils() {
+public class DifWindowUtils {
+    private DifWindowUtils() {
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
     }

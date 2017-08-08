@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * __--__---__-------------__----__
  */
 
-public class LibStrMatcher {
+public class DifStrMatcher {
 
     /*
 移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
@@ -83,7 +83,7 @@ public class LibStrMatcher {
     public static Boolean isChinese(String str) {
         Boolean isChinese = true;
         String chinese = "[\u0391-\uFFE5]";
-        if (!LibStrUtils.isEmpty(str)) {
+        if (!DifStrUtils.isEmpty(str)) {
             // 获取字段值的长度，如果含中文字符，则每个中文字符长度为2，否则为1
             for (int i = 0; i < str.length(); i++) {
                 // 获取一个字符
@@ -107,7 +107,7 @@ public class LibStrMatcher {
     public static Boolean isContainChinese(String str) {
         Boolean isChinese = false;
         String chinese = "[\u0391-\uFFE5]";
-        if (!LibStrUtils.isEmpty(str)) {
+        if (!DifStrUtils.isEmpty(str)) {
             // 获取字段值的长度，如果含中文字符，则每个中文字符长度为2，否则为1
             for (int i = 0; i < str.length(); i++) {
                 // 获取一个字符

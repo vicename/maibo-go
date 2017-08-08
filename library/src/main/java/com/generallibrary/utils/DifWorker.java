@@ -10,17 +10,17 @@ import java.util.concurrent.Future;
  * 线程池封装
  * Created by yueguang on 15-8-18.
  */
-public class LibWorker {
+public class DifWorker {
     private ExecutorService mThreadPool;
-    private static LibWorker mWorker;
+    private static DifWorker mWorker;
 
-    private LibWorker() {
+    private DifWorker() {
         mThreadPool = Executors.newCachedThreadPool();
     }
 
-    public static LibWorker getInstance() {
+    public static DifWorker getInstance() {
         if (mWorker == null) {
-            mWorker = new LibWorker();
+            mWorker = new DifWorker();
         }
         return mWorker;
     }

@@ -2,10 +2,10 @@ package com.generallibrary.utils;
 
 
 /**
- * © 2012 amsoft.cn 名称：LibStrUtils.java 描述：字符串处理类.
+ * © 2012 amsoft.cn 描述：字符串处理类.
  *
  */
-public class LibStrUtils {
+public class DifStrUtils {
 
     /**
      * 描述：将null转化为“”.

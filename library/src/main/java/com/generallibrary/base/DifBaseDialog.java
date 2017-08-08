@@ -1,4 +1,4 @@
-package com.generallibrary.custom_views;
+package com.generallibrary.base;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -15,7 +15,7 @@ import com.generallibrary.R;
  *
  * @author feng
  */
-public abstract class LibBaseDialog extends Dialog {
+public abstract class DifBaseDialog extends Dialog {
     /**
      * 对话框的布局
      */
@@ -23,7 +23,7 @@ public abstract class LibBaseDialog extends Dialog {
     protected ButtonSureClickListener mButtonSureClickListener;
     protected Context mContext;
 
-    public LibBaseDialog(Context context) {
+    public DifBaseDialog(Context context) {
         super(context, R.style.Lib_dialog);
         mContext = context;
         mDialogView = (ViewGroup) View.inflate(context, setLayoutView(), null);
@@ -31,7 +31,7 @@ public abstract class LibBaseDialog extends Dialog {
         setOwnerActivity((Activity) context);
     }
 
-    public LibBaseDialog(Context context, boolean isTranseBackGround) {
+    public DifBaseDialog(Context context, boolean isTranseBackGround) {
         super(context, R.style.Lib_dialog2);
         mContext = context;
         mDialogView = (ViewGroup) View.inflate(context, setLayoutView(), null);

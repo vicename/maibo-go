@@ -9,7 +9,7 @@ import java.util.TimeZone;
 /**
  * 文件名：DateUtils.java 日期处理相关工具类
  */
-public class LibDateUtils {
+public class DifDateUtils {
 
     /**
      * 定义常量
@@ -41,7 +41,7 @@ public class LibDateUtils {
     private final SimpleDateFormat longHourSdf;
     private final SimpleDateFormat longSdf;
 
-    public LibDateUtils() {
+    public DifDateUtils() {
         this.shortSdf = new SimpleDateFormat("yyyy-MM-dd");
         this.longHourSdf = new SimpleDateFormat("yyyy-MM-dd HH");
         this.longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

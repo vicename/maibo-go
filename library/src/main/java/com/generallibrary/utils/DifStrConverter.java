@@ -14,7 +14,7 @@ import java.security.MessageDigest;
  * __--__---__-------------__----__
  */
 
-public class LibStrConverter {
+public class DifStrConverter {
     /**
      * 描述：MD5加密.
      *

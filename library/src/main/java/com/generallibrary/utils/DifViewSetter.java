@@ -14,7 +14,7 @@ import android.widget.TextView;
  * __--__---__-------------__----__
  */
 
-public class LibViewSetter {
+public class DifViewSetter {
     public static final int INVALID = Integer.MIN_VALUE;
 
     /**
@@ -24,7 +24,7 @@ public class LibViewSetter {
      * @return the int
      */
     public static int scaleValue(Context context, float value) {
-        DisplayMetrics mDisplayMetrics = LibSystemUtils.getDisplayMetrics(context);
+        DisplayMetrics mDisplayMetrics = DifSystemUtils.getDisplayMetrics(context);
         //为了兼容尺寸小密度大的情况
         if (mDisplayMetrics.scaledDensity > 2) {
             //缩小到密度分之一
@@ -41,7 +41,7 @@ public class LibViewSetter {
      * @return the int
      */
     public static int scaleTextValue(Context context, float value) {
-        DisplayMetrics mDisplayMetrics = LibSystemUtils.getDisplayMetrics(context);
+        DisplayMetrics mDisplayMetrics = DifSystemUtils.getDisplayMetrics(context);
         //为了兼容尺寸小密度大的情况
         if (mDisplayMetrics.scaledDensity > 2) {
             //缩小到密度分之一

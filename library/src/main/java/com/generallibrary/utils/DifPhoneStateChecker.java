@@ -10,7 +10,7 @@ import android.net.NetworkInfo;
  * __--__---__-------------__----__
  */
 
-public class LibPhoneStateChecker {
+public class DifPhoneStateChecker {
     /**
      * 描述：判断网络是否有效.
      *

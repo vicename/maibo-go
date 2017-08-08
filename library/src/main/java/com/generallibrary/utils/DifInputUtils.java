@@ -9,7 +9,7 @@ import android.view.inputmethod.InputMethodManager;
  * __--__---__-------------__----__
  */
 
-public class LibInputUtils {
+public class DifInputUtils {
     /**
      * 打开键盘.
      *

@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
  * Created by Li DaChang on 16/9/5.
  * ..-..---.-.--..---.-...-..-....-.
  */
-public class LibCommonUtils {
+public class DifCommonUtils {
     public static boolean initPath(String path) {
         File rootFile = new File(path);
         return initPath(rootFile);

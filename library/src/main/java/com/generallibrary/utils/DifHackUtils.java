@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
  * __--__---__-------------__----__
  */
 
-public class LibHackUtils {
+public class DifHackUtils {
     /**
      * 描述：执行命令.
      *

@@ -19,15 +19,15 @@ import android.widget.Toast;
 
 import com.generallibrary.custom_views.loading.CommonProgressDialog;
 import com.generallibrary.R;
-import com.generallibrary.utils.LibWindowUtils;
-import com.generallibrary.utils.LibWorker;
+import com.generallibrary.utils.DifWindowUtils;
+import com.generallibrary.utils.DifWorker;
 import com.generallibrary.utils.WeakHandler;
 
 /**
  * Created by Li DaChang on 16/9/5.
  * ..-..---.-.--..---.-...-..-....-.
  */
-public abstract class LibBaseActivity extends AppCompatActivity implements WeakHandler.IHandler {
+public abstract class DifBaseActivity extends AppCompatActivity implements WeakHandler.IHandler {
     public Context mContext;
     public WeakHandler mHandler;
     private View mStatusBarFitter;
@@ -173,8 +173,8 @@ public abstract class LibBaseActivity extends AppCompatActivity implements WeakH
     protected void fitStatusBar(int resId) {
         // 创建View
         mStatusBarFitter = new View(this);
-        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LibWindowUtils.getStatusBarHeight(LibBaseActivity.this));
-        mStatusBarFitter.setBackgroundColor(ContextCompat.getColor(LibBaseActivity.this, resId));
+        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DifWindowUtils.getStatusBarHeight(DifBaseActivity.this));
+        mStatusBarFitter.setBackgroundColor(ContextCompat.getColor(DifBaseActivity.this, resId));
         mStatusBarFitter.setLayoutParams(lParams);
         // 获得根视图并把TextView加进去。
         ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
@@ -188,7 +188,7 @@ public abstract class LibBaseActivity extends AppCompatActivity implements WeakH
     }
 
     protected void toastGo(final String msg) {
-        if (LibWorker.isInMainThread()) {
+        if (DifWorker.isInMainThread()) {
             Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
         } else {
             runOnUiThread(new Runnable() {
