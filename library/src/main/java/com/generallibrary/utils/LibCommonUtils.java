@@ -20,7 +20,6 @@ public class LibCommonUtils {
         return rootFile.exists() || rootFile.mkdirs();
     }
 
-
     /**
      * 让按钮一段时间内不可点击
      *
@@ -40,5 +39,4 @@ public class LibCommonUtils {
     public static String formatPrice(double price) {
         return new DecimalFormat("####0.00").format(price);
     }
-
 }

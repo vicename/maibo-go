@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.generallibrary.CustomViews.loading.CommonProgressDialog;
+import com.generallibrary.custom_views.loading.CommonProgressDialog;
 import com.generallibrary.R;
 import com.generallibrary.utils.WeakHandler;
 

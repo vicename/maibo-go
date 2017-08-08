@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:layout_height="match_parent">
 
-    <com.generallibrary.CustomViews.progressBarCircular.ProgressBarCircular
+    <com.generallibrary.custom_views.progress_bar_circular.ProgressBarCircular
         android:id="@+id/progress_bar"
         android:layout_width="100dp"
         android:layout_height="100dp"

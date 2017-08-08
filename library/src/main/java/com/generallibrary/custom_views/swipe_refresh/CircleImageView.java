@@ -1,4 +1,4 @@
-package com.generallibrary.CustomViews.swipeRefresh;
+package com.generallibrary.custom_views.swipe_refresh;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.generallibrary.CustomViews.loading.CommonProgressDialog;
+import com.generallibrary.custom_views.loading.CommonProgressDialog;
 import com.generallibrary.R;
 import com.generallibrary.utils.LibWindowUtils;
 import com.generallibrary.utils.LibWorker;

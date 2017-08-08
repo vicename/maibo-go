@@ -1,4 +1,4 @@
-package com.generallibrary.CustomViews.progressBarCircular;
+package com.generallibrary.custom_views.progress_bar_circular;
 
 import android.content.Context;
 import android.graphics.Canvas;

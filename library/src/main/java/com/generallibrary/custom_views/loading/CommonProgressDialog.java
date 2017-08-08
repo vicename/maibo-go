@@ -1,11 +1,11 @@
-package com.generallibrary.CustomViews.loading;
+package com.generallibrary.custom_views.loading;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.TextView;
 
-import com.generallibrary.CustomViews.progressBarCircular.ProgressBarCircular;
+import com.generallibrary.custom_views.progress_bar_circular.ProgressBarCircular;
 import com.generallibrary.R;
 
 /**

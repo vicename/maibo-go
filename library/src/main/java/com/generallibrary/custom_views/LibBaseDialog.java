@@ -1,4 +1,4 @@
-package com.generallibrary.CustomViews;
+package com.generallibrary.custom_views;
 
 import android.app.Activity;
 import android.app.Dialog;
