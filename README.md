@@ -36,6 +36,13 @@
   - `Logger` Log类
   - `ToastUtils` Toast类
 
+### 监听简化
+
+位于`listener_simpler`包
+
+- `TextWatcherSimpler`文字输入监听简化,只保留`onTextChanged(CharSequence s, int start, int before, int count)`方法
+- `AnimatorListenerSimplerEnd` 动画监听,只保留`onAnimationEnd(Animator animation)`方法
+
 ### Base类
 
 不多解释,一看类名就懂
@@ -45,4 +52,18 @@
 - DifBaseLazyFragment
 - DifBaseDialog
 - DifDefine
+
+### Adapter
+
+#### RecyclerView的Adapter
+
+位于`adapter/base_recycler`包,用于RecyclerView单布局,用法一看就懂
+
+- BaseRecyclerViewAdapter<T>
+- BaseViewHolder<T>
+- BaseOnItemClickRecyclerListener
+
+
+#### 其他Adapter,比较鸡肋,考虑去掉
+
 
