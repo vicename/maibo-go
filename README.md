@@ -61,7 +61,7 @@
 
 - BaseRecyclerViewAdapter<T>
 - BaseViewHolder<T>
-- BaseOnItemClickRecyclerListener
+- OnItemRecyclerClickListener
 
 
 #### 其他Adapter,比较鸡肋,考虑去掉
