@@ -25,6 +25,7 @@
   - `SPUtils` SharedPrefences简化
 - 其他
   - `DifCommonUtils` 
+  - `DifImageUtils` 图片处理
   - `DifGsonUtils` Gson处理
   - `DifDateUtils` 日期处理
   - `DifHackUtils` Root相关处理
