@@ -3,14 +3,14 @@ package com.generallibrary.adapter.loadmore;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.generallibrary.adapter.base_recycler.BaseOnItemClickRecyclerListener;
+import com.generallibrary.adapter.base_recycler.OnItemRecyclerClickListener;
 
 /**
  * @author YanLu
  * @since 15/11/1
  */
 public abstract class ClickableViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    BaseOnItemClickRecyclerListener mClickListener;
+    OnItemRecyclerClickListener mClickListener;
 
     public ClickableViewHolder(View itemView) {
         super(itemView);
@@ -34,11 +34,11 @@ public abstract class ClickableViewHolder extends RecyclerView.ViewHolder implem
         }
     }
 
-    public BaseOnItemClickRecyclerListener getOnRecyclerItemClickListener() {
+    public OnItemRecyclerClickListener getOnRecyclerItemClickListener() {
         return mClickListener;
     }
 
-    public void setOnRecyclerItemClickListener(BaseOnItemClickRecyclerListener mClickListener) {
+    public void setOnRecyclerItemClickListener(OnItemRecyclerClickListener mClickListener) {
         this.mClickListener = mClickListener;
     }
 }
