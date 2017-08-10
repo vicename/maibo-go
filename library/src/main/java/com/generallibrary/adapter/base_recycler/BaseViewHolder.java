@@ -8,7 +8,7 @@ import android.view.View;
  */
 public abstract class BaseViewHolder<T> extends ViewHolder implements View.OnClickListener {
 
-    private OnItemRecyclerClickListener mListener;
+    private OnItemClickDifListener mListener;
     /**
      * 上下文
      */
@@ -22,7 +22,7 @@ public abstract class BaseViewHolder<T> extends ViewHolder implements View.OnCli
      */
     protected int position;
 
-    public BaseViewHolder(Context context, OnItemRecyclerClickListener listener, View itemView) {
+    public BaseViewHolder(Context context, OnItemClickDifListener listener, View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         this.mContext = context;

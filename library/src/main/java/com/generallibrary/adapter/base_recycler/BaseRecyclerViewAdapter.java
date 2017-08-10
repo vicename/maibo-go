@@ -25,7 +25,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends Adapter<ViewHolder> {
     private BaseViewHolder baseHolder;
 
     private int mCurrentPos;
-    private OnItemRecyclerClickListener mOnItemClickRecyclerListener;
+    private OnItemClickDifListener mOnItemClickRecyclerListener;
 
     public BaseRecyclerViewAdapter(Context mContext, List<T> data) {
         this.mContext = mContext;
@@ -73,14 +73,14 @@ public abstract class BaseRecyclerViewAdapter<T> extends Adapter<ViewHolder> {
     /**
      * 获得Holder
      */
-    public abstract BaseViewHolder getItemHolder(Context context, OnItemRecyclerClickListener listener, ViewGroup parent);
+    public abstract BaseViewHolder getItemHolder(Context context, OnItemClickDifListener listener, ViewGroup parent);
 
     /**
      * 设置Item点击监听
      *
      * @param listener
      */
-    public void setOnItemClickListener(OnItemRecyclerClickListener listener) {
+    public void setOnItemClickListener(OnItemClickDifListener listener) {
         this.mOnItemClickRecyclerListener = listener;
     }
 }
