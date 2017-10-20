@@ -135,7 +135,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, File> {
             intent.setDataAndType(Uri.fromFile(result), DownloadApkService.APK_ARCHIVE);
             context.startActivity(intent);
 
-            Uri packageURI = Uri.parse("package:com.wiwide_takeaway");
+            Uri packageURI = Uri.parse("package:takeaway");
             Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
             context.startActivity(uninstallIntent);
         }
