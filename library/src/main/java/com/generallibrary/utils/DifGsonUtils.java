@@ -1,9 +1,6 @@
-package com.generallibrary.net;
+package com.generallibrary.utils;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
@@ -11,21 +8,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description gson解析工具类
+ * @data 2015/9/22
  */
-public class GsonUtil {
+public class DifGsonUtils {
 
     private static Gson gson = null;
 
     static {
         if (gson == null) {
-            GsonBuilder gb = new GsonBuilder();
-            gb.registerTypeAdapter(String.class, new JsonStringConverter());
-            gson = gb.create();
+            gson = new Gson();
         }
     }
 
-    private GsonUtil() {
+    private DifGsonUtils() {
     }
 
     /**
@@ -35,18 +30,6 @@ public class GsonUtil {
      * @return TypeToken中的泛型对象
      */
     public static <T> T parse(String json, TypeToken typeToken) {
-        return gson.fromJson(json, typeToken.getType());
-    }
-
-    /**
-     * @param json      json字符串
-     * @param typeToken 仿这个写法new TypeToken<List<String>>(){}
-     * @param skipList  要忽略的字段
-     * @param <T>       泛型
-     * @return TypeToken中的泛型对象
-     */
-    public static <T> T parse(String json, TypeToken typeToken, List<String> skipList) {
-        setSkiper(skipList);
         return gson.fromJson(json, typeToken.getType());
     }
 
@@ -87,19 +70,6 @@ public class GsonUtil {
         T t = null;
         if (gson != null) {
             try {
-                t = gson.fromJson(gsonString, cls);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return t;
-    }
-
-    public static <T> T gsonToBean(String gsonString, Class<T> cls, List<String> skipList) {
-        T t = null;
-        if (gson != null) {
-            try {
-                setSkiper(skipList);
                 t = gson.fromJson(gsonString, cls);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -171,43 +141,4 @@ public class GsonUtil {
         return map;
     }
 
-    private static class CustomExclusionStrategy implements ExclusionStrategy {
-        List<String> skipList;
-
-        public CustomExclusionStrategy(List<String> skipList) {
-            this.skipList = skipList;
-        }
-
-        @Override
-        public boolean shouldSkipField(FieldAttributes f) {
-            boolean isSkip = false;
-            for (String s : skipList) {
-                if (f.getName().equals(s)) {
-                    isSkip = true;
-                }
-            }
-            return isSkip;
-        }
-
-        @Override
-        public boolean shouldSkipClass(Class<?> clazz) {
-            return false;
-        }
-    }
-
-    private static void setSkiper(List<String> skipList) {
-        if (skipList != null) {
-            gson = new GsonBuilder().setExclusionStrategies(new CustomExclusionStrategy(skipList)).create();
-        }
-    }
-
-    public static Gson getGsonWithSkiper(List<String> skipList) {
-        Gson gsonWithSkiper;
-        if (skipList != null) {
-            gsonWithSkiper = new GsonBuilder().setExclusionStrategies(new CustomExclusionStrategy(skipList)).create();
-        } else {
-            gsonWithSkiper = gson;
-        }
-        return gsonWithSkiper;
-    }
 }

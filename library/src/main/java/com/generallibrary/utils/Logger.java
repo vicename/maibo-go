@@ -3,7 +3,7 @@ package com.generallibrary.utils;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.generallibrary.base.LibDefine;
+import com.generallibrary.base.DifDefine;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -44,25 +44,25 @@ public class Logger {
      * @param msg 信息
      */
     private static void takeLogI(String tag, String className, String msg) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             Log.i(tag + "--", className + msg);
         }
     }
 
     private static void takeLogD(String tag, String className, String msg) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             Log.d(tag + "--", className + msg);
         }
     }
 
     private static void takeLogW(String tag, String className, String msg) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             Log.w(tag + "--", className + msg);
         }
     }
 
     private static void takeLogE(String tag, String className, String msg) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             Log.e(tag, msg);
         }
     }
@@ -93,21 +93,21 @@ public class Logger {
 
     public static void d(String msg) {
         takeLogD(DEFAULT_TAG, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("d", DEFAULT_TAG, msg);
         }
     }
 
     public static void d(int tag, String msg) {
         takeLogD(getTag(tag), getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("d", getTag(tag), msg);
         }
     }
 
     public static void d(String tag, String msg) {
         takeLogD(tag, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("d", tag, msg);
         }
     }
@@ -122,21 +122,21 @@ public class Logger {
 
     public static void i(String msg) {
         takeLogI(DEFAULT_TAG, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("i", DEFAULT_TAG, msg);
         }
     }
 
     public static void i(int flag, String msg) {
         takeLogI(getTag(flag), getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("i", getTag(flag), msg);
         }
     }
 
     public static void i(String tag, String msg) {
         takeLogI(tag, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("i", tag, msg);
         }
     }
@@ -201,21 +201,21 @@ public class Logger {
 
     public static void w(String msg) {
         takeLogW(DEFAULT_TAG, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("w", DEFAULT_TAG, msg);
         }
     }
 
     public static void w(int flag, String msg) {
         takeLogW(getTag(flag), getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("w", getTag(flag), msg);
         }
     }
 
     public static void w(String tag, String msg) {
         takeLogW(tag, getClassName(), msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("w", tag, msg);
         }
     }
@@ -230,22 +230,22 @@ public class Logger {
 
     public static void e(String msg) {
         takeLogE(DEFAULT_TAG, getClassName(), getMethodName() + msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("e", DEFAULT_TAG, msg);
         }
     }
 
     public static void e(int flag, String msg) {
         takeLogE(getTag(flag), getClassName(), getMethodName() + ":" + msg);
-        if (LibDefine.mIsLogToFile) {
+        if (DifDefine.mIsLogToFile) {
             writeToFile("e", DEFAULT_TAG, msg);
         }
     }
 
     public static void e(String tag, String msg) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             takeLogE(tag, getClassName(), getMethodName() + msg);
-            if (LibDefine.mIsLogToFile) {
+            if (DifDefine.mIsLogToFile) {
                 writeToFile("e", tag, getClassName() + msg);
             }
         }
@@ -260,7 +260,7 @@ public class Logger {
     }
 
     public static void json(int tagFlag, String jsonStr) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             while (jsonStr.length() > 3950) {
                 int subStringIndex = jsonStr.lastIndexOf(",", 3950);
                 if (subStringIndex == -1) {
@@ -280,7 +280,7 @@ public class Logger {
      * @param time 当前时间
      */
     public static void line(String msg1, String time) {
-        if (LibDefine.mIsDebug)
+        if (DifDefine.mIsDebug)
             Log.i(DEFAULT_TAG,
                     "---====================================---\n" +
                             "\t我是" + msg1 + "的分割线-" + time +
@@ -292,21 +292,21 @@ public class Logger {
     }
 
     public static void logMatch(String tag, String msg) {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             Log.i(tag, msg);
-            if (LibDefine.mIsLogToFile) {
+            if (DifDefine.mIsLogToFile) {
                 writeToFile("Match", tag, msg);
             }
         }
     }
 
     public static void writeToFile(final String level, final String flag, final String msg1) {
-        LibBackgroundWorker.getInstance().executeTask(new Runnable() {
+        DifWorker.getInstance().executeTask(new Runnable() {
             @Override
             public void run() {
-                if (LibCommonUtils.initPath(LibDefine.mPathLog)) {
-                    String msg = LibDateUtil.formatTime(System.currentTimeMillis()) + "  " + level + "   " + flag + "    " + msg1 + "\n";
-                    File log = new File(LibDefine.mPathLog, SDK_LOG_FILE);
+                if (DifCommonUtils.initPath(DifDefine.mPathLog)) {
+                    String msg = DifDateUtils.formatTime(System.currentTimeMillis()) + "  " + level + "   " + flag + "    " + msg1 + "\n";
+                    File log = new File(DifDefine.mPathLog, SDK_LOG_FILE);
                     FileWriter fw = null;
                     try {
                         fw = new FileWriter(log, true);
@@ -333,7 +333,7 @@ public class Logger {
      * @return 类名前缀
      */
     public static String getClassName() {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             StackTraceElement traceElement = ((new Exception()).getStackTrace())[2];
             String className = traceElement.getFileName();
             //去除文件名中的后缀
@@ -356,7 +356,7 @@ public class Logger {
     }
 
     public static String getMethodName() {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
 
             StackTraceElement traceElement = ((new Exception()).getStackTrace())[2];
             String className = traceElement.getFileName();
@@ -371,7 +371,7 @@ public class Logger {
     }
 
     public static String getLineMethod() {
-        if (LibDefine.mIsDebug) {
+        if (DifDefine.mIsDebug) {
             StackTraceElement traceElement = ((new Exception()).getStackTrace())[2];
             String className = traceElement.getFileName();
             if (className.contains(".java")) {
