@@ -13,13 +13,13 @@ import java.util.Set;
  * ..-..---.-.--..---.-...-..-....-.
  */
 public class SPUtils {
-    private static final String FILE = "config";
+    private static final String DEFAULT_CONFIG = "config";
 
     private SharedPreferences mSharedPreferences;
 
     public SPUtils(Context context) {
         super();
-        mSharedPreferences = context.getSharedPreferences(FILE, Context.MODE_PRIVATE);
+        mSharedPreferences = context.getSharedPreferences(DEFAULT_CONFIG, Context.MODE_PRIVATE);
     }
     public SPUtils(Context context,String name) {
         super();
