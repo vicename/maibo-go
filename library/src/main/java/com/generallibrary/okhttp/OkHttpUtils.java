@@ -39,7 +39,7 @@ public class OkHttpUtils {
     }
 
 
-    private static OkHttpUtils initClient(OkHttpClient okHttpClient) {
+    public static OkHttpUtils initClient(OkHttpClient okHttpClient) {
         if (mInstance == null) {
             synchronized (OkHttpUtils.class) {
                 if (mInstance == null) {
