@@ -1,5 +1,6 @@
 package com.generallibrary.okhttp;
 
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.generallibrary.okhttp.builder.GetBuilder;
@@ -104,20 +105,20 @@ public class OkHttpUtils {
         requestCall.getCall().enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                sendFailResultCallback(call, e, finalCallback, id);
+                sendFailResultCallback(call, e, finalCallback, id, null);
             }
 
             @Override
             public void onResponse(final Call call, final Response response) {
                 try {
                     if (call.isCanceled()) {
-                        sendFailResultCallback(call, new IOException("Canceled!"), finalCallback, id);
+                        sendFailResultCallback(call, new IOException("Canceled!"), finalCallback, id, response);
                         return;
                     }
 
                     if (!finalCallback.validateResponse(response, id)) {
                         finalCallback.parseNetworkResponse(response, id);
-                        sendFailResultCallback(call, new IOException("request failed , reponse's code is : " + response.code()), finalCallback, id);
+                        sendFailResultCallback(call, new IOException("request failed , response's code is : " + response.code()), finalCallback, id, response);
                         return;
                     }
 
@@ -125,7 +126,7 @@ public class OkHttpUtils {
                     sendSuccessResultCallback(o, finalCallback, id);
                 } catch (Exception e) {
                     Log.e("feng", "Exception = " + e.toString());
-                    sendFailResultCallback(call, e, finalCallback, id);
+                    sendFailResultCallback(call, e, finalCallback, id, response);
                 } finally {
                     if (response.body() != null)
                         response.body().close();
@@ -136,12 +137,13 @@ public class OkHttpUtils {
     }
 
 
-    private void sendFailResultCallback(final Call call, final Exception e, final Callback callback, final int id) {
+    private void sendFailResultCallback(final Call call, final Exception e, final Callback callback, final int id, @Nullable final Response response) {
         if (callback == null) return;
 
         mPlatform.execute(new Runnable() {
             @Override
             public void run() {
+                callback.onError(call, e, id, response);
                 callback.onError(call, e, id);
                 callback.onAfter(id);
             }
